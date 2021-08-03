@@ -57,7 +57,7 @@ namespace Models
 
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "sp_insertar_categoria";
+                SqlCmd.CommandText = "spinsertar_categoria";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter ParamIdCategoria = new SqlParameter();
@@ -110,7 +110,7 @@ namespace Models
 
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "sp_editar_categoria";
+                SqlCmd.CommandText = "speditar_categoria";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter ParamIdCategoria = new SqlParameter();
@@ -162,7 +162,7 @@ namespace Models
 
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "sp_eliminar_categoria";
+                SqlCmd.CommandText = "speliminar_categoria";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter ParamIdCategoria = new SqlParameter();
@@ -197,7 +197,7 @@ namespace Models
                 SqlCon.ConnectionString = Conexion.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "sp_mostrar_categoria";
+                SqlCmd.CommandText = "spmostrar_categoria";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
@@ -221,7 +221,7 @@ namespace Models
                 SqlCon.ConnectionString = Conexion.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "sp_buscar_categoria";
+                SqlCmd.CommandText = "spbuscar_categoria";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter ParamTextoBuscar = new SqlParameter();

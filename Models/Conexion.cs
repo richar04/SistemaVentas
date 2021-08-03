@@ -8,6 +8,6 @@ namespace Models
 {
     class Conexion
     {
-        public static string Cn = "Data Source = DESKTOP-JVRF6CR; Initial Catalog = gestiondb; Integrated Security = true";
+        public static string Cn = "Data Source = DESKTOP-T2G2QOC\LOCALDB#B5A7D27C; Initial Catalog = dbventas; Integrated Security = true";
     }
 }

@@ -8,7 +8,7 @@ using Models;
 
 namespace Controllers
 {
-    class CategoriaController
+    public class CategoriaController
     {
         public static string Insertar(string nombre, string descripcion)
         {

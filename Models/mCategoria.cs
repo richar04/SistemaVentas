@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
+//asjdkajsd
 namespace Models
 {
     public class mCategoria

@@ -62,6 +62,12 @@
     <Compile Include="vCategoria.Designer.cs">
       <DependentUpon>vCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="vProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vProveedor.Designer.cs">
+      <DependentUpon>vProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="vVistaCategoria_Articulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vCategoria.resx">
       <DependentUpon>vCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vProveedor.resx">
+      <DependentUpon>vProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vVistaCategoria_Articulo.resx">
       <DependentUpon>vVistaCategoria_Articulo.cs</DependentUpon>

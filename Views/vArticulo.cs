@@ -298,7 +298,7 @@ namespace Views
             this.pxImagen.Image = Image.FromStream(ms);
             this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            this.txtIdcategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcaterogira"].Value);
+            this.txtIdcategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
             this.txtCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["categoria"].Value);
 
             this.tabControl1.SelectedIndex = 1;

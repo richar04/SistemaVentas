@@ -10,7 +10,7 @@ namespace Models
 {
     public class mProveedor
     {
-        private int _Idproveedor;
+        private int _IdProveedor;
         private string _Razonsocial;
         private string _Sectorcomercial;
         private string _Cuitcuil;
@@ -19,7 +19,7 @@ namespace Models
         private string _Email;
         private string _TextoBuscar;
 
-        public int Idproveedor { get => _Idproveedor; set => _Idproveedor = value; }
+        public int IdProveedor { get => _IdProveedor; set => _IdProveedor = value; }
         public string Razonsocial { get => _Razonsocial; set => _Razonsocial = value; }
         public string Sectorcomercial { get => _Sectorcomercial; set => _Sectorcomercial = value; }
         public string Cuitcuil { get => _Cuitcuil; set => _Cuitcuil = value; }
@@ -36,7 +36,7 @@ namespace Models
         public mProveedor(int idproveedor, string razonsocial, string sectorcomercial, string cuitcuil, string direccion,
             string telefono, string email, string textobuscar)
         {
-            this.Idproveedor = idproveedor;
+            this.IdProveedor = idproveedor;
             this.Razonsocial = razonsocial;
             this.Sectorcomercial = sectorcomercial;
             this.Cuitcuil = cuitcuil;
@@ -226,7 +226,7 @@ namespace Models
                 SqlParameter ParamIdProveedor = new SqlParameter();
                 ParamIdProveedor.ParameterName = "@idproveedor";
                 ParamIdProveedor.SqlDbType = SqlDbType.Int;
-                ParamIdProveedor.Value = Proveedor.Idproveedor;
+                ParamIdProveedor.Value = Proveedor.IdProveedor;
                 SqlCmd.Parameters.Add(ParamIdProveedor);
 
                 respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se elimino el registro";

@@ -146,7 +146,7 @@ namespace Models
                 SqlParameter ParamIdProveedor = new SqlParameter();
                 ParamIdProveedor.ParameterName = "@idproveedor";
                 ParamIdProveedor.SqlDbType = SqlDbType.Int;
-                ParamIdProveedor.Direction = ParameterDirection.Output;
+                ParamIdProveedor.Value = Proveedor.IdProveedor;
                 SqlCmd.Parameters.Add(ParamIdProveedor);
 
                 SqlParameter ParamRazonSocial = new SqlParameter();

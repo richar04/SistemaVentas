@@ -10,22 +10,27 @@ using System.Windows.Forms;
 using Controllers;
 
 
-
 namespace Views
 {
-    public partial class vCategoria : Form
+    public partial class vArticulo : Form
     {
         private bool IsNuevo = false;
         private bool IsEditar = false;
 
 
-        public vCategoria()
+
+
+
+        public vArticulo()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(this.txtNombre, "Ingrese el nombre de la categoria");
+            this.ttMensaje.SetToolTip(this.txtNombre, "Ingrese el nombre del Articulo");
+            this.ttMensaje.SetToolTip(this.pxImagen, "Seleccione la Imagen del Articulo");
+            this.ttMensaje.SetToolTip(this.txtCategoria, "Seleccione la Categoria del Articulo");
 
+            this.txtCategoria.ReadOnly = true;
         }
-        
+
         //Mensaje de confirmacion
         private void MensajeOk(string mensaje)
         {
@@ -43,17 +48,25 @@ namespace Views
         //Limpiar todos los controles del form
         private void Limpiar()
         {
+            this.txtCodigo.Text = string.Empty;
             this.txtNombre.Text = string.Empty;
             this.txtDescripcion.Text = string.Empty;
             this.txtIdcategoria.Text = string.Empty;
+            this.txtCategoria.Text = string.Empty;
+            //this.pxImagen.Image = global::Views.Properties.Resources.file;
             this.errorIcono.Clear();
         }
 
         //Habilitar los controles del form
         private void Habilitar(bool valor)
         {
+            this.txtCodigo.ReadOnly = !valor;
             this.txtNombre.ReadOnly = !valor;
             this.txtDescripcion.ReadOnly = !valor;
+            this.btnBuscarCategoria.Enabled = valor;
+            this.btnCargar.Enabled = valor;
+            this.btnLimpiar.Enabled = valor;
+            this.txtIdarticulo.ReadOnly = !valor;
             //this.txtIdcategoria.ReadOnly = !valor;
 
         }
@@ -85,12 +98,13 @@ namespace Views
         {
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns[1].Visible = false;
+            this.dataListado.Columns[6].Visible = false;
         }
 
         //Metodo Mostrar
         private void Mostrar()
         {
-            this.dataListado.DataSource = CategoriaController.Mostrar();
+            this.dataListado.DataSource = ArticuloController.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -98,77 +112,68 @@ namespace Views
         //Metodo Buscar por nombre
         private void BuscarNombre()
         {
-            this.dataListado.DataSource = CategoriaController.BuscarNombre(this.txtBuscar.Text);
+            this.dataListado.DataSource = ArticuloController.BuscarNombre(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.BuscarNombre();
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void txtIdcategoria_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void vCategoria_Load(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void vArticulo_Load(object sender, EventArgs e)
         {
             this.Top = 0;
             this.Left = 0;
-
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
+
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            DialogResult result = dialog.ShowDialog();
+
+            if (result==DialogResult.OK)
+            {
+                this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+                this.pxImagen.Image = Image.FromFile(dialog.FileName);
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            //this.pxImagen.Image = global::Views.Properties.Resources.file;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.BuscarNombre();
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             this.BuscarNombre();
-
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogResult Opcion;
-                Opcion = MessageBox.Show("Desea eliminar los registros seleccionados?","Sistema de Ventas",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-
-                if(Opcion == DialogResult.OK)
-                {
-                    string Codigo;
-                    String Respuesta = "";
-                    bool erroreliminado = false;
-
-                    foreach (DataGridViewRow row in dataListado.Rows)
-                    {
-                        if(Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            Codigo = Convert.ToString(row.Cells[1].Value);
-                            Respuesta = CategoriaController.Eliminar(Convert.ToInt32(Codigo));
-                            if (!Respuesta.Equals("OK"))
-                                erroreliminado = true;
-                        }
-                    }
-
-                    if (erroreliminado==false) this.MensajeOk("Se eliminaron los registros");
-                    else MensajeError(Respuesta);
-                    this.Mostrar();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -186,27 +191,35 @@ namespace Views
             try
             {
                 string respuesta = "";
-                if(this.txtNombre.Text == string.Empty)
+                if (this.txtNombre.Text == string.Empty || this.txtIdcategoria.Text == string.Empty || this.txtCodigo.Text == string.Empty)
                 {
                     MensajeError("Faltan ingresar datos");
-                    errorIcono.SetError(txtNombre, "Ingrese Nombre");
+                    errorIcono.SetError(txtNombre, "Ingrese un valor");
+                    errorIcono.SetError(txtCodigo, "Ingrese un valor");
+                    errorIcono.SetError(txtCategoria, "Ingrese un valor");
                 }
                 else
                 {
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    this.pxImagen.Image.Save(ms,System.Drawing.Imaging.ImageFormat.Png);
+                    byte[] imagen = ms.GetBuffer();
+
                     if (this.IsNuevo)
                     {
-                        respuesta = CategoriaController.Insertar(this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim());
+                        respuesta = ArticuloController.Insertar(this.txtCodigo.Text,this.txtNombre.Text.Trim().ToUpper(),
+                            this.txtDescripcion.Text.Trim(), imagen, Convert.ToInt32(this.txtIdcategoria.Text));
                     }
                     else
                     {
-                        respuesta = CategoriaController.Editar(Convert.ToInt32(this.txtIdcategoria.Text),
-                            this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim());
+                        respuesta = ArticuloController.Editar(Convert.ToInt32(this.txtIdarticulo.Text),this.txtCodigo.Text,
+                            this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim(), 
+                            imagen, Convert.ToInt32(this.txtIdcategoria.Text));
                     }
 
-                    if(respuesta.Equals("OK"))
+                    if (respuesta.Equals("OK"))
                     {
-                        if(this.IsNuevo) this.MensajeOk("Se creó el registro correctamente");
-                        
+                        if (this.IsNuevo) this.MensajeOk("Se creó el registro correctamente");
+
                         else this.MensajeOk("Se editó el registro correctamente");
                     }
                     else
@@ -222,24 +235,15 @@ namespace Views
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
 
-        private void dataListado_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtIdcategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
-
-            this.tabControl1.SelectedIndex = 1;
-        }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (!this.txtIdcategoria.Text.Equals(""))
+            if (!this.txtIdarticulo.Text.Equals(""))
             {
                 this.IsEditar = true;
                 this.Botones();
@@ -255,23 +259,6 @@ namespace Views
             this.Botones();
             this.Limpiar();
             this.Habilitar(false);
-
-        }
-
-        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
-        {
-            if(chkEliminar.Checked) this.dataListado.Columns[0].Visible = true;
-            
-            else this.dataListado.Columns[0].Visible = false;
-        }
-
-        private void dataListado_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if(e.ColumnIndex==dataListado.Columns["Eliminar"].Index)
-            {
-                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
-                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
-            }
         }
     }
 }

@@ -96,7 +96,6 @@ namespace Models
                 SqlParameter ParamIdCategoria = new SqlParameter();
                 ParamIdCategoria.ParameterName = "@idcategoria";
                 ParamIdCategoria.SqlDbType = SqlDbType.Int;
-                ParamIdCategoria.Direction = ParameterDirection.Output;
                 ParamIdCategoria.Value = Articulo.Idcategoria;
                 SqlCmd.Parameters.Add(ParamIdCategoria);
 
@@ -169,7 +168,6 @@ namespace Models
                 SqlParameter ParamIdCategoria = new SqlParameter();
                 ParamIdCategoria.ParameterName = "@idcategoria";
                 ParamIdCategoria.SqlDbType = SqlDbType.Int;
-                ParamIdCategoria.Direction = ParameterDirection.Output;
                 ParamIdCategoria.Value = Articulo.Idcategoria;
                 SqlCmd.Parameters.Add(ParamIdCategoria);
 

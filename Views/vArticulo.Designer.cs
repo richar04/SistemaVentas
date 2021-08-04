@@ -59,20 +59,20 @@ namespace Views
             this.label7 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
+            this.pxImagen = new System.Windows.Forms.PictureBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.pxImagen = new System.Windows.Forms.PictureBox();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // ttMensaje
@@ -324,6 +324,7 @@ namespace Views
             this.txtIdcategoria.Name = "txtIdcategoria";
             this.txtIdcategoria.Size = new System.Drawing.Size(100, 20);
             this.txtIdcategoria.TabIndex = 18;
+            this.txtIdcategoria.TextChanged += new System.EventHandler(this.txtIdcategoria_TextChanged_1);
             // 
             // label8
             // 
@@ -370,6 +371,15 @@ namespace Views
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
+            // 
+            // pxImagen
+            // 
+            this.pxImagen.InitialImage = global::Views.Properties.Resources.file;
+            this.pxImagen.Location = new System.Drawing.Point(394, 87);
+            this.pxImagen.Name = "pxImagen";
+            this.pxImagen.Size = new System.Drawing.Size(186, 143);
+            this.pxImagen.TabIndex = 12;
+            this.pxImagen.TabStop = false;
             // 
             // txtCodigo
             // 
@@ -425,15 +435,6 @@ namespace Views
             this.label1.Text = "Articulos";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // pxImagen
-            // 
-            this.pxImagen.InitialImage = global::Views.Properties.Resources.file;
-            this.pxImagen.Location = new System.Drawing.Point(394, 87);
-            this.pxImagen.Name = "pxImagen";
-            this.pxImagen.Size = new System.Drawing.Size(186, 143);
-            this.pxImagen.TabIndex = 12;
-            this.pxImagen.TabStop = false;
-            // 
             // vArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,10 +450,10 @@ namespace Views
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

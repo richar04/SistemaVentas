@@ -277,5 +277,10 @@ namespace Views
                 ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
             }
         }
+
+        private void dataListado_CurrentCellChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -68,7 +68,7 @@ namespace Views
             this.txtDescripcion.Text = string.Empty;
             this.txtIdcategoria.Text = string.Empty;
             this.txtCategoria.Text = string.Empty;
-            //this.pxImagen.Image = global::Views.Properties.Resources.file;
+            this.pxImagen.Image = global::Views.Properties.Resources.file;
             this.errorIcono.Clear();
         }
 
@@ -80,9 +80,7 @@ namespace Views
             this.txtDescripcion.ReadOnly = !valor;
             this.btnBuscarCategoria.Enabled = valor;
             this.btnCargar.Enabled = valor;
-            this.btnLimpiar.Enabled = valor;
-            this.txtIdarticulo.ReadOnly = !valor;
-            //this.txtIdcategoria.ReadOnly = !valor;
+            this.btnLimpiar.Enabled = valor;            
 
         }
 
@@ -160,6 +158,8 @@ namespace Views
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
+            this.txtIdcategoria.ReadOnly = true;
+            this.txtIdarticulo.ReadOnly = true;
 
         }
 
@@ -178,7 +178,7 @@ namespace Views
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
-            //this.pxImagen.Image = global::Views.Properties.Resources.file;
+            this.pxImagen.Image = global::Views.Properties.Resources.file;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -354,6 +354,11 @@ namespace Views
         {
             vVistaCategoria_Articulo form = new vVistaCategoria_Articulo();
             form.ShowDialog();
+        }
+
+        private void txtIdcategoria_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

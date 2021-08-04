@@ -62,6 +62,12 @@
     <Compile Include="vCategoria.Designer.cs">
       <DependentUpon>vCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="vVistaCategoria_Articulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vVistaCategoria_Articulo.Designer.cs">
+      <DependentUpon>vVistaCategoria_Articulo.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controllers\Controllers.csproj">
@@ -80,9 +86,13 @@
     <EmbeddedResource Include="vCategoria.resx">
       <DependentUpon>vCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vVistaCategoria_Articulo.resx">
+      <DependentUpon>vVistaCategoria_Articulo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\file.png" />
+    <None Include="Resources\file.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -61,11 +61,12 @@ namespace Views.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a .
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static string file {
+        internal static System.Drawing.Bitmap file {
             get {
-                return ResourceManager.GetString("file", resourceCulture);
+                object obj = ResourceManager.GetObject("file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

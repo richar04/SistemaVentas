@@ -59,20 +59,20 @@ namespace Views
             this.label7 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
-            this.pxImagen = new System.Windows.Forms.PictureBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.pxImagen = new System.Windows.Forms.PictureBox();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // ttMensaje
@@ -121,6 +121,8 @@ namespace Views
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListado.Size = new System.Drawing.Size(665, 291);
             this.dataListado.TabIndex = 7;
+            this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
+            this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
             // 
             // Eliminar
             // 
@@ -146,6 +148,7 @@ namespace Views
             this.chkEliminar.TabIndex = 5;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
+            this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
             // 
             // btnImprimir
             // 
@@ -164,6 +167,7 @@ namespace Views
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "&Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnBuscar
             // 
@@ -312,6 +316,7 @@ namespace Views
             this.btnBuscarCategoria.TabIndex = 19;
             this.btnBuscarCategoria.Text = "B";
             this.btnBuscarCategoria.UseVisualStyleBackColor = true;
+            this.btnBuscarCategoria.Click += new System.EventHandler(this.btnBuscarCategoria_Click);
             // 
             // txtIdcategoria
             // 
@@ -365,14 +370,6 @@ namespace Views
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
-            // 
-            // pxImagen
-            // 
-            this.pxImagen.Location = new System.Drawing.Point(394, 87);
-            this.pxImagen.Name = "pxImagen";
-            this.pxImagen.Size = new System.Drawing.Size(186, 143);
-            this.pxImagen.TabIndex = 12;
-            this.pxImagen.TabStop = false;
             // 
             // txtCodigo
             // 
@@ -428,6 +425,15 @@ namespace Views
             this.label1.Text = "Articulos";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // pxImagen
+            // 
+            this.pxImagen.InitialImage = global::Views.Properties.Resources.file;
+            this.pxImagen.Location = new System.Drawing.Point(394, 87);
+            this.pxImagen.Name = "pxImagen";
+            this.pxImagen.Size = new System.Drawing.Size(186, 143);
+            this.pxImagen.TabIndex = 12;
+            this.pxImagen.TabStop = false;
+            // 
             // vArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,10 +449,10 @@ namespace Views
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -148,6 +148,7 @@ namespace Views
                     string Codigo;
                     String Respuesta = "";
                     bool erroreliminado = false;
+                    String RespuestaError = "";
 
                     foreach (DataGridViewRow row in dataListado.Rows)
                     {
@@ -156,12 +157,15 @@ namespace Views
                             Codigo = Convert.ToString(row.Cells[1].Value);
                             Respuesta = CategoriaController.Eliminar(Convert.ToInt32(Codigo));
                             if (!Respuesta.Equals("OK"))
+                            {
                                 erroreliminado = true;
+                                RespuestaError = Respuesta;
+                            }
                         }
                     }
 
                     if (erroreliminado==false) this.MensajeOk("Se eliminaron los registros");
-                    else MensajeError(Respuesta);
+                    else MensajeError(RespuestaError);
                     this.Mostrar();
                 }
             }

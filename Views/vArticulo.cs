@@ -17,7 +17,22 @@ namespace Views
         private bool IsNuevo = false;
         private bool IsEditar = false;
 
+        private static vArticulo _Instancia;
 
+        public static vArticulo GetInstancia()
+        {
+            if(_Instancia == null)
+            {
+                _Instancia = new vArticulo();
+            }
+            return _Instancia;
+        }
+
+        public void SetCategoria(String idcategoria, String nombre)
+        {
+            this.txtIdcategoria.Text = idcategoria;
+            this.txtCategoria.Text = nombre;
+        }
 
 
 
@@ -259,6 +274,86 @@ namespace Views
             this.Botones();
             this.Limpiar();
             this.Habilitar(false);
+        }
+
+        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
+            {
+                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
+                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
+            }
+        }
+
+        private void dataListado_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdarticulo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idarticulo"].Value);
+            this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["codigo"].Value);
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
+            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
+
+            byte[] imagenBuffer = (byte[])this.dataListado.CurrentRow.Cells["imagen"].Value;
+            System.IO.MemoryStream ms = new System.IO.MemoryStream(imagenBuffer);
+
+            this.pxImagen.Image = Image.FromStream(ms);
+            this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            this.txtIdcategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcaterogira"].Value);
+            this.txtCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["categoria"].Value);
+
+            this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEliminar.Checked) this.dataListado.Columns[0].Visible = true;
+
+            else this.dataListado.Columns[0].Visible = false;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Opcion;
+                Opcion = MessageBox.Show("Desea eliminar los registros seleccionados?", "Sistema de Ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (Opcion == DialogResult.OK)
+                {
+                    string Codigo;
+                    String Respuesta = "";
+                    bool erroreliminado = false;
+                    String RespuestaError = "";
+
+                    foreach (DataGridViewRow row in dataListado.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            Codigo = Convert.ToString(row.Cells[1].Value);
+                            Respuesta = ArticuloController.Eliminar(Convert.ToInt32(Codigo));
+                            if (!Respuesta.Equals("OK"))
+                            {
+                                erroreliminado = true;
+                                RespuestaError = Respuesta;
+                            }
+                        }
+                    }
+
+                    if (erroreliminado == false) this.MensajeOk("Se eliminaron los registros");
+                    else MensajeError(RespuestaError);
+                    this.Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnBuscarCategoria_Click(object sender, EventArgs e)
+        {
+            vVistaCategoria_Articulo form = new vVistaCategoria_Articulo();
+            form.ShowDialog();
         }
     }
 }

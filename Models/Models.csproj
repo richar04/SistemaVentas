@@ -45,6 +45,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="mArticulo.cs" />
     <Compile Include="mCategoria.cs" />
+    <Compile Include="mCliente.cs" />
     <Compile Include="mProveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

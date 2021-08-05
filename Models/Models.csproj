@@ -46,6 +46,7 @@
     <Compile Include="mArticulo.cs" />
     <Compile Include="mCategoria.cs" />
     <Compile Include="mCliente.cs" />
+    <Compile Include="mEmpleado.cs" />
     <Compile Include="mProveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

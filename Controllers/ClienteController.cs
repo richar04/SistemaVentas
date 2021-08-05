@@ -31,7 +31,7 @@ namespace Controllers
             Obj.Telefono = telefono;
             Obj.Email = email;
 
-            return Obj.Insertar(Obj);
+            return Obj.Editar(Obj);
         }
 
         public static string Eliminar(int idcliente)

@@ -45,6 +45,7 @@
     <Compile Include="CategoriaController.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ClienteController.cs" />
+    <Compile Include="EmpleadoController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorController.cs" />
   </ItemGroup>

@@ -68,6 +68,24 @@
     <Compile Include="vCliente.Designer.cs">
       <DependentUpon>vCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="vEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vEmpleado.Designer.cs">
+      <DependentUpon>vEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vLogin.Designer.cs">
+      <DependentUpon>vLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vPrincipal.Designer.cs">
+      <DependentUpon>vPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="vProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +119,15 @@
     <EmbeddedResource Include="vCliente.resx">
       <DependentUpon>vCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vEmpleado.resx">
+      <DependentUpon>vEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vLogin.resx">
+      <DependentUpon>vLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vPrincipal.resx">
+      <DependentUpon>vPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vProveedor.resx">
       <DependentUpon>vProveedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +137,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\file.png" />
+    <None Include="Resources\morcos bikes1.PNG" />
+    <None Include="Resources\morcos bikes.PNG" />
     <None Include="Resources\file.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
